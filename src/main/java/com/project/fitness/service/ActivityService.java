@@ -8,6 +8,10 @@ import com.project.fitness.repository.ActivityRepository;
 import com.project.fitness.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class ActivityService {
@@ -42,5 +46,12 @@ public class ActivityService {
         activityResponse.setUpdatedAt(activity.getUpdatedAt());
         activityResponse.setType(activity.getType());
         return  activityResponse;
+    }
+
+    public List<ActivityResponse> getUserActivities(String userId) {
+        List<Activity> userActivities = activityRepository.findByUserId(userId);
+        return userActivities.stream()
+                .map(this::mappedToResponse)
+                .collect(Collectors.toList());
     }
 }

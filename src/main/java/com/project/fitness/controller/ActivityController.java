@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,9 +26,10 @@ public class ActivityController {
         return ResponseEntity.ok(activityResponse);
     }
 
-//    @GetMapping
-//    public ResponseEntity<List<ActivityResponse>> getActivity(){
-//        return "";
-//    }
+    @GetMapping
+    public ResponseEntity<List<ActivityResponse>> getUserActivities(@RequestHeader(value = "X-USER-ID") String userId){
+        List<ActivityResponse> activityResponses = activityService.getUserActivities(userId);
+        return ResponseEntity.ok(activityResponses);
+    }
 
 }
