@@ -18,6 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/activities")
 public class ActivityController {
+
     private final ActivityService activityService;
 
     @PostMapping

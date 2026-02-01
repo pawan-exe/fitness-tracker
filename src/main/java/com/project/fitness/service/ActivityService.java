@@ -15,8 +15,10 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class ActivityService {
+
     private final ActivityRepository activityRepository;
     private  final UserRepository userRepository;
+
     public ActivityResponse trackActivity(ActivityRequest activityRequest) {
         User user = userRepository.findById(activityRequest.getUserId())
                 .orElseThrow(() -> new RuntimeException("Invalid user" + activityRequest.getUserId()));

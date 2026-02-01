@@ -10,6 +10,8 @@ import com.project.fitness.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class RecommendationService {
@@ -17,6 +19,7 @@ public class RecommendationService {
     private final UserRepository userRepository;
     private final ActivityRepository activityRepository;
     private final RecommendationRepository recommendationRepository;
+
     public Recommendation generateRecommendation(RecommendationRequest request) {
         User user = userRepository.findById(request.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found" + request.getUserId()));
@@ -34,6 +37,15 @@ public class RecommendationService {
                 .build();
 
         return recommendationRepository.save(recommendation);
+    }
 
+    public List<Recommendation> getUserRecommendation(String userId) {
+        List<Recommendation> recommendationList = recommendationRepository.findByUserId(userId);
+        return recommendationList;
+    }
+
+    public List<Recommendation> getActivityRecommendation(String activityId) {
+        List<Recommendation> recommendationList = recommendationRepository.findByActivityId(activityId);
+        return recommendationList;
     }
 }

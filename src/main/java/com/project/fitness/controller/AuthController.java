@@ -2,7 +2,6 @@ package com.project.fitness.controller;
 
 import com.project.fitness.dto.RegisterUser;
 import com.project.fitness.dto.UserResponse;
-import com.project.fitness.model.User;
 import com.project.fitness.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
