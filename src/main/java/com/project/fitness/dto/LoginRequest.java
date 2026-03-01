@@ -1,17 +1,13 @@
 package com.project.fitness.dto;
 
-import com.project.fitness.model.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class  RegisterUser {
+@AllArgsConstructor
+public class LoginRequest {
     private String email;
     private String password;
-    private String firstName;
-    private String lastName;
-    private UserRole role;
 }
